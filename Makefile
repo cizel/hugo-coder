@@ -1,20 +1,12 @@
 HUGO_BIN=hugo
 
-.PHONY: prepare release build demo clean
+.PHONY: start changelog demo
 
-build: prepare
-	$(HUGO_BIN) --source demo
+start:
+	$(HUGO_BIN) server --source=exampleSite --themesDir=../.. 
 
-demo: prepare
-	$(HUGO_BIN) server --buildDrafts --source demo
+demo:
+	$(HUGO_BIN) server --source=../cizel-blog --themesDir=../hugo-coder 
 
-release: build
-	rm -rf ./resources && cp -r ./demo/resources ./resources
-
-prepare: clean
-	mkdir -p demo/themes/hugo-coder
-	rsync -av exampleSite/ demo
-	rsync -av --exclude='demo' --exclude='exampleSite' --exclude='.git' . demo/themes/hugo-coder
-
-clean:
-	rm -rf demo
+changelog:
+	conventional-changelog -p angular -i CHANGELOG.md -s

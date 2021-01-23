@@ -1,4 +1,4 @@
-<div class="authors">
+<span class="authors">
     <i class="fa fa-user" aria-hidden="true"></i>
     {{- range $index, $el := . -}}
       {{- if gt $index 0 }}
@@ -6,4 +6,4 @@
       {{- end }}
       <a href="{{ ( printf "authors/%s/" ( . | urlize ) ) | relLangURL }}">{{ . }}</a>
     {{- end -}}
-  </div>
+</span>

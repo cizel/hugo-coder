@@ -1,4 +1,4 @@
-<div class="categories">
+<span class="categories">
   <i class="fa fa-folder" aria-hidden="true"></i>
   {{- range $index, $el := . -}}
     {{- if gt $index 0 }}
@@ -6,4 +6,4 @@
     {{- end }}
     <a href="{{ ( printf "categories/%s/" ( . | urlize ) ) | relLangURL }}">{{ . }}</a>
   {{- end -}}
-</div>
+</span>
